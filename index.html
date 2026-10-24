@@ -1,1 +1,163 @@
-<!doctype html><meta charset="utf-8"><title>Youssef Ouadelli Apps</title><h1>Youssef Ouadelli Apps</h1><p>Developer of mobile apps for iOS and Android.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VidBox – Discover movies & series</title>
+<meta name="description" content="VidBox is your pocket guide to movies and TV: trending titles, smart suggestions matched to today's weather, cinemas near you — all in one beautiful app.">
+<meta name="apple-itunes-app" content="app-id=6816451485">
+<link rel="icon" href="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/06/04/93/060493d2-3c00-d42a-fd38-5f84f8bcd0cf/AppIcon-0-0-1x_U007epad-0-1-85-220.png/128x128bb.png">
+<style>
+  :root{--bg:#0a0e17;--bg2:#121a30;--card:#141b2d;--line:#22304f;--text:#f2f5fb;--muted:#9aa7c2;--gold:#e8b64a;--gold2:#f6d582;--red:#e8404f;--blue:#2f7cf6}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;font-size:16px;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+  /* Navigation */
+  header{position:sticky;top:0;z-index:10;background:rgba(10,14,23,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.06)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:3px;font-size:18px}
+  .brand img{width:34px;height:34px;border-radius:9px;box-shadow:0 4px 14px rgba(0,0,0,.5)}
+  .links{display:flex;gap:4px}
+  .links a{color:var(--muted);font-size:14px;font-weight:600;padding:8px 14px;border-radius:999px;transition:.2s}
+  .links a:hover{color:var(--text);background:rgba(255,255,255,.06)}
+  .links a.on{color:#0a0e17;background:var(--gold)}
+  .menu{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:10px;width:40px;height:40px;font-size:18px;cursor:pointer}
+  @media(max-width:720px){
+    .menu{display:block}
+    .links{display:none;position:absolute;top:66px;left:0;right:0;flex-direction:column;background:#0d1322;border-bottom:1px solid var(--line);padding:10px 16px 16px}
+    .links.open{display:flex}
+    .links a{padding:12px 14px}
+  }
+
+  /* Hero */
+  .hero{position:relative;padding:72px 0 40px;text-align:center;overflow:hidden}
+  .hero:before{content:"";position:absolute;inset:-200px -100px auto;height:640px;background:radial-gradient(closest-side,rgba(47,124,246,.28),transparent),radial-gradient(closest-side at 70% 40%,rgba(232,64,79,.22),transparent);filter:blur(10px);z-index:-1}
+  .icon{width:104px;height:104px;border-radius:24px;box-shadow:0 18px 50px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.08);margin-bottom:26px}
+  .pill{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--gold2);background:rgba(232,182,74,.1);border:1px solid rgba(232,182,74,.3);padding:6px 14px;border-radius:999px;margin-bottom:20px}
+  h1{font-size:clamp(34px,6vw,62px);line-height:1.06;font-weight:800;letter-spacing:-1px;margin-bottom:18px}
+  h1 span{background:linear-gradient(180deg,var(--gold2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lead{font-size:clamp(17px,2.4vw,20px);color:var(--muted);max-width:640px;margin:0 auto 32px}
+  .cta{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+  .badge{display:inline-flex;align-items:center;gap:12px;background:#000;color:#fff;border:1px solid #3a3a3a;border-radius:14px;padding:11px 22px;transition:.2s}
+  .badge:hover{transform:translateY(-2px);border-color:#777}
+  .badge svg{width:26px;height:26px;fill:#fff}
+  .badge small{display:block;font-size:11px;color:#bbb;line-height:1.1}
+  .badge b{font-size:20px;line-height:1.15;font-weight:600}
+  .ghost{display:inline-flex;align-items:center;padding:14px 22px;border-radius:14px;border:1px solid var(--line);color:var(--text);font-weight:600}
+  .ghost:hover{border-color:var(--muted)}
+  .facts{display:flex;justify-content:center;gap:28px;margin-top:28px;color:var(--muted);font-size:14px;flex-wrap:wrap}
+  .facts b{color:var(--text)}
+
+  /* Screenshots */
+  .shots{display:flex;gap:20px;overflow-x:auto;padding:30px 20px 34px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;justify-content:safe center}
+  .shots::-webkit-scrollbar{display:none}
+  .shots figure{flex:0 0 auto;scroll-snap-align:center;text-align:center}
+  .shots img{height:520px;width:auto;aspect-ratio:1320/2868;border-radius:34px;border:6px solid #1d2438;box-shadow:0 24px 60px rgba(0,0,0,.6);background:#111;display:block}
+  .shots figcaption{margin-top:12px;font-size:14px;color:var(--muted);font-weight:600}
+  @media(max-width:520px){.shots img{height:440px}}
+
+  /* Features */
+  section{padding:56px 0}
+  .h2{font-size:clamp(26px,4vw,38px);font-weight:800;text-align:center;letter-spacing:-.5px}
+  .sub{text-align:center;color:var(--muted);max-width:560px;margin:10px auto 34px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+  .card{background:linear-gradient(180deg,#161e33,var(--card));border:1px solid var(--line);border-radius:20px;padding:24px;transition:.2s}
+  .card:hover{transform:translateY(-3px);border-color:#34466f}
+  .ico{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;font-size:22px;margin-bottom:14px;background:rgba(232,182,74,.12)}
+  .card h3{font-size:18px;margin-bottom:6px}
+  .card p{color:#c5cee0;font-size:15px}
+
+  /* Final CTA */
+  .final{text-align:center;background:linear-gradient(135deg,rgba(232,64,79,.16),rgba(47,124,246,.18));border:1px solid var(--line);border-radius:28px;padding:48px 24px}
+  .final p{color:var(--muted);margin:10px 0 26px}
+
+  footer{border-top:1px solid var(--line);padding:30px 0 40px;color:var(--muted);font-size:14px}
+  .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .foot nav{display:flex;gap:18px;flex-wrap:wrap}
+  .foot nav a:hover{color:var(--text)}
+  .tmdb{margin-top:14px;font-size:12.5px;opacity:.8}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="./"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/06/04/93/060493d2-3c00-d42a-fd38-5f84f8bcd0cf/AppIcon-0-0-1x_U007epad-0-1-85-220.png/128x128bb.png" alt="">VIDBOX</a>
+    <button class="menu" aria-label="Menu" onclick="document.querySelector('.links').classList.toggle('open')">☰</button>
+    <nav class="links">
+      <a class="on" href="./">Accueil</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of use</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <img class="icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/06/04/93/060493d2-3c00-d42a-fd38-5f84f8bcd0cf/AppIcon-0-0-1x_U007epad-0-1-85-220.png/256x256bb.png" alt="VidBox app icon">
+    <div><span class="pill">✨ AI picks · Free on iPhone &amp; iPad</span></div>
+    <h1>Find your next <span>favorite</span><br>movie or series</h1>
+    <p class="lead">VidBox is your pocket guide to movies and TV: trending titles, smart suggestions matched to today's weather, cinemas near you — all in one beautiful app.</p>
+    <div class="cta">
+      <a class="badge" href="https://apps.apple.com/app/id6816451485" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M16.37 1.43c0 1.14-.42 2.2-1.25 3.03-.9.9-2 1.43-3.18 1.34-.14-1.1.43-2.28 1.22-3.07.86-.87 2.33-1.5 3.2-1.3zM20.5 17.2c-.56 1.3-.83 1.88-1.55 3.03-1 1.6-2.43 3.6-4.2 3.62-1.57.02-1.97-1.02-4.1-1.01-2.13.01-2.57 1.03-4.14 1.01-1.77-.02-3.12-1.82-4.13-3.42C-.44 16.04-.74 10.9 1.05 8.2c1.27-1.92 3.27-3.04 5.15-3.04 1.92 0 3.12 1.05 4.71 1.05 1.54 0 2.48-1.05 4.7-1.05 1.67 0 3.45.91 4.72 2.49-4.15 2.27-3.48 8.2.17 9.55z"/></svg>
+        <span><small>Download on the</small><b>App Store</b></span>
+      </a>
+      <a class="ghost" href="#features">See features</a>
+    </div>
+    <div class="facts"><span><b>No account</b> needed</span><span><b>Weather-based</b> picks</span><span><b>Cinemas</b> near you</span></div>
+  </div>
+
+  <div class="shots" aria-label="App screenshots">
+    <figure><img loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/99/8b/02/998b02e3-10b0-bd4a-2e9c-76a2b83308a9/01_home_1320x2868.jpg/600x1304bb.jpg" alt="Home screen"><figcaption>Trending every day</figcaption></figure>
+    <figure><img loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/75/7b/89/757b896f-d503-e46b-494c-6782718b5b6a/02_suggest_1320x2868.jpg/600x1304bb.jpg" alt="For You suggestions"><figcaption>Picks for today's weather</figcaption></figure>
+    <figure><img loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/54/27/71/54277196-1936-566f-0d53-a493b178303b/03_cinemas_1320x2868.jpg/600x1304bb.jpg" alt="Cinemas near you"><figcaption>Cinemas near you</figcaption></figure>
+    <figure><img loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/25/9c/6a/259c6a03-fd53-3393-4162-df70fc64d951/04_detail_1320x2868.jpg/600x1304bb.jpg" alt="Title details"><figcaption>Everything about a title</figcaption></figure>
+    <figure><img loading="lazy" src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/c1/cf/f9/c1cff935-088e-4069-4302-1818a9e7023b/05_search_1320x2868.jpg/600x1304bb.jpg" alt="Search"><figcaption>Instant search</figcaption></figure>
+  </div>
+
+  <section id="features">
+    <div class="wrap">
+      <h2 class="h2">Never wonder what to watch again</h2>
+      <p class="sub">Everything you need to choose your next movie night, in one fast app.</p>
+      <div class="grid">
+        <div class="card"><div class="ico">🔥</div><h3>Discover what's hot</h3><p>Trending, popular, top-rated and coming-soon movies and series — or jump straight into a genre.</p></div>
+        <div class="card"><div class="ico">🌦️</div><h3>Picks for today's weather</h3><p>Rainy afternoon or sunny evening? Get six suggestions that fit the mood, each with a short reason why.</p></div>
+        <div class="card"><div class="ico">🎟️</div><h3>Cinemas near you</h3><p>See the closest theaters with distances and addresses, and get directions in one tap.</p></div>
+        <div class="card"><div class="ico">🔎</div><h3>Instant search</h3><p>Ratings, runtime, cast, trailer, similar titles and recommendations on one rich page.</p></div>
+        <div class="card"><div class="ico">📌</div><h3>Your personal lists</h3><p>Save titles to My List and mark what you've watched. Everything stays on your device.</p></div>
+        <div class="card"><div class="ico">🔔</div><h3>Daily idea, if you want it</h3><p>An optional evening reminder with today's "what to watch" pick. Turn it off anytime.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="final">
+        <h2 class="h2">Your next favorite is waiting</h2>
+        <p>Free on iPhone and iPad. No account, no sign-up.</p>
+        <a class="badge" href="https://apps.apple.com/app/id6816451485" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M16.37 1.43c0 1.14-.42 2.2-1.25 3.03-.9.9-2 1.43-3.18 1.34-.14-1.1.43-2.28 1.22-3.07.86-.87 2.33-1.5 3.2-1.3zM20.5 17.2c-.56 1.3-.83 1.88-1.55 3.03-1 1.6-2.43 3.6-4.2 3.62-1.57.02-1.97-1.02-4.1-1.01-2.13.01-2.57 1.03-4.14 1.01-1.77-.02-3.12-1.82-4.13-3.42C-.44 16.04-.74 10.9 1.05 8.2c1.27-1.92 3.27-3.04 5.15-3.04 1.92 0 3.12 1.05 4.71 1.05 1.54 0 2.48-1.05 4.7-1.05 1.67 0 3.45.91 4.72 2.49-4.15 2.27-3.48 8.2.17 9.55z"/></svg>
+          <span><small>Download on the</small><b>App Store</b></span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <span>© 2026 VidBox · <a href="mailto:support@vidboxapp.online">support@vidboxapp.online</a></span>
+      <nav><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of use</a><a href="contact.html">Contact</a></nav>
+    </div>
+    <p class="tmdb">This product uses the TMDB API but is not endorsed or certified by TMDB.</p>
+  </div>
+</footer>
+
+</body>
+</html>
