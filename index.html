@@ -20,16 +20,19 @@
   .nav{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
   .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:3px;font-size:18px}
   .brand img{width:34px;height:34px;border-radius:9px;box-shadow:0 4px 14px rgba(0,0,0,.5)}
-  .links{display:flex;gap:4px}
-  .links a{color:var(--muted);font-size:14px;font-weight:600;padding:8px 14px;border-radius:999px;transition:.2s}
-  .links a:hover{color:var(--text);background:rgba(255,255,255,.06)}
-  .links a.on{color:#0a0e17;background:var(--gold)}
-  .menu{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:10px;width:40px;height:40px;font-size:18px;cursor:pointer}
+  .links{display:flex;gap:26px}
+  .links a{position:relative;color:var(--muted);font-size:14.5px;font-weight:500;padding:22px 0;transition:color .2s}
+  .links a:hover{color:var(--text)}
+  .links a.on{color:var(--text)}
+  .links a.on:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;border-radius:2px;background:var(--gold)}
+  .menu{display:none;place-items:center;background:none;border:1px solid var(--line);color:var(--text);border-radius:10px;width:40px;height:40px;cursor:pointer}
+  .menu svg{width:20px;height:20px}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px rgba(232,182,74,.2)}
   @media(max-width:720px){
-    .menu{display:block}
+    .menu{display:grid}
     .links{display:none;position:absolute;top:66px;left:0;right:0;flex-direction:column;background:#0d1322;border-bottom:1px solid var(--line);padding:10px 16px 16px}
     .links.open{display:flex}
-    .links a{padding:12px 14px}
+    .links{gap:0}.links a{padding:13px 4px;border-bottom:1px solid rgba(255,255,255,.05)}.links a.on:after{display:none}.links a.on{color:var(--gold2)}
   }
 
   /* Hero */
@@ -66,7 +69,8 @@
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
   .card{background:linear-gradient(180deg,#161e33,var(--card));border:1px solid var(--line);border-radius:20px;padding:24px;transition:.2s}
   .card:hover{transform:translateY(-3px);border-color:#34466f}
-  .ico{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;font-size:22px;margin-bottom:14px;background:rgba(232,182,74,.12)}
+  .ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;margin-bottom:16px;color:var(--gold2);background:rgba(232,182,74,.08);border:1px solid rgba(232,182,74,.22)}
+  .ico svg{width:22px;height:22px}
   .card h3{font-size:18px;margin-bottom:6px}
   .card p{color:#c5cee0;font-size:15px}
 
@@ -86,9 +90,9 @@
 <header>
   <div class="wrap nav">
     <a class="brand" href="./"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/06/04/93/060493d2-3c00-d42a-fd38-5f84f8bcd0cf/AppIcon-0-0-1x_U007epad-0-1-85-220.png/128x128bb.png" alt="">VIDBOX</a>
-    <button class="menu" aria-label="Menu" onclick="document.querySelector('.links').classList.toggle('open')">☰</button>
+    <button class="menu" aria-label="Menu" onclick="document.querySelector('.links').classList.toggle('open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     <nav class="links">
-      <a class="on" href="./">Accueil</a>
+      <a class="on" href="./">Home</a>
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms of use</a>
       <a href="contact.html">Contact</a>
@@ -99,7 +103,7 @@
 <main>
   <div class="wrap hero">
     <img class="icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/06/04/93/060493d2-3c00-d42a-fd38-5f84f8bcd0cf/AppIcon-0-0-1x_U007epad-0-1-85-220.png/256x256bb.png" alt="VidBox app icon">
-    <div><span class="pill">✨ AI picks · Free on iPhone &amp; iPad</span></div>
+    <div><span class="pill"><i class="dot"></i>AI picks · Free on iPhone &amp; iPad</span></div>
     <h1>Find your next <span>favorite</span><br>movie or series</h1>
     <p class="lead">VidBox is your pocket guide to movies and TV: trending titles, smart suggestions matched to today's weather, cinemas near you — all in one beautiful app.</p>
     <div class="cta">
@@ -125,12 +129,12 @@
       <h2 class="h2">Never wonder what to watch again</h2>
       <p class="sub">Everything you need to choose your next movie night, in one fast app.</p>
       <div class="grid">
-        <div class="card"><div class="ico">🔥</div><h3>Discover what's hot</h3><p>Trending, popular, top-rated and coming-soon movies and series — or jump straight into a genre.</p></div>
-        <div class="card"><div class="ico">🌦️</div><h3>Picks for today's weather</h3><p>Rainy afternoon or sunny evening? Get six suggestions that fit the mood, each with a short reason why.</p></div>
-        <div class="card"><div class="ico">🎟️</div><h3>Cinemas near you</h3><p>See the closest theaters with distances and addresses, and get directions in one tap.</p></div>
-        <div class="card"><div class="ico">🔎</div><h3>Instant search</h3><p>Ratings, runtime, cast, trailer, similar titles and recommendations on one rich page.</p></div>
-        <div class="card"><div class="ico">📌</div><h3>Your personal lists</h3><p>Save titles to My List and mark what you've watched. Everything stays on your device.</p></div>
-        <div class="card"><div class="ico">🔔</div><h3>Daily idea, if you want it</h3><p>An optional evening reminder with today's "what to watch" pick. Turn it off anytime.</p></div>
+        <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l5-5 4 4 8-8"/><path d="M15 8h5v5"/></svg></div><h3>Discover what's hot</h3><p>Trending, popular, top-rated and coming-soon movies and series — or jump straight into a genre.</p></div>
+        <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 .5-7.97A6 6 0 0 0 6.1 11 3.5 3.5 0 0 0 7 18z"/><path d="M9 21l.5-1M13 21l.5-1"/></svg></div><h3>Picks for today's weather</h3><p>Rainy afternoon or sunny evening? Get six suggestions that fit the mood, each with a short reason why.</p></div>
+        <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16v3a2 2 0 0 0 0 4v3H4v-3a2 2 0 0 0 0-4z"/><path d="M14 7v10" stroke-dasharray="2 2"/></svg></div><h3>Cinemas near you</h3><p>See the closest theaters with distances and addresses, and get directions in one tap.</p></div>
+        <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg></div><h3>Instant search</h3><p>Ratings, runtime, cast, trailer, similar titles and recommendations on one rich page.</p></div>
+        <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10v16l-5-3.5L7 20z"/></svg></div><h3>Your personal lists</h3><p>Save titles to My List and mark what you've watched. Everything stays on your device.</p></div>
+        <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></div><h3>Daily idea, if you want it</h3><p>An optional evening reminder with today's "what to watch" pick. Turn it off anytime.</p></div>
       </div>
     </div>
   </section>
