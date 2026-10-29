@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FootScore – Live Scores</title><link rel="icon" href="../icon.png"><style>
+:root{--bg:#0a1020;--bg2:#111c38;--card:#141d30;--line:#243049;--text:#f2f5fb;--muted:#93a0b8;--mint:#1fe0a0;--mint2:#7ff0c9}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  background:radial-gradient(1100px 600px at 85% -10%,rgba(31,224,160,.18) 0%,transparent 60%),
+             radial-gradient(900px 600px at -10% 40%,rgba(91,108,255,.14) 0%,transparent 60%),var(--bg);
+  color:var(--text);line-height:1.65;font-size:16px;min-height:100vh}
+.wrap{max-width:880px;margin:0 auto;padding:36px 20px 56px}
+.brand{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.brand img{width:44px;height:44px;border-radius:11px;box-shadow:0 6px 18px rgba(0,0,0,.45)}
+.brand b{font-size:21px;letter-spacing:3px;font-weight:900;font-style:italic}
+nav{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 30px}
+nav a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;padding:7px 14px;border-radius:999px;border:1px solid var(--line)}
+nav a:hover{color:var(--text);border-color:var(--muted)}
+nav a.on{color:var(--bg);background:var(--mint);border-color:var(--mint)}
+h1{font-size:clamp(30px,5.4vw,46px);line-height:1.12;font-weight:900;margin-bottom:10px}
+h1 span{color:var(--mint)}
+.meta{color:var(--muted);font-size:14px;margin-bottom:26px}
+h2{font-size:20px;margin:34px 0 10px;color:var(--mint2);font-weight:800}
+p,li{color:#d5dcec} p{margin:0 0 12px} ul{margin:0 0 14px 22px} li{margin:6px 0}
+a{color:var(--mint)}
+.note{background:rgba(31,224,160,.08);border:1px solid rgba(31,224,160,.3);border-radius:14px;padding:14px 18px;margin:16px 0;color:#d8fbef}
+.tablewrap{overflow-x:auto;margin:12px 0 18px;border:1px solid var(--line);border-radius:14px}
+table{width:100%;border-collapse:collapse;min-width:560px;background:var(--card)}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-size:14.5px}
+th{color:var(--mint2);background:rgba(255,255,255,.03)} tr:last-child td{border-bottom:none}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:22px 0}
+.ico{font-size:26px;margin-bottom:6px}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;margin:10px 0 20px}
+.lead{font-size:19px;color:#cfd8ea;margin:14px 0 22px}
+.btn{display:inline-block;background:var(--mint);color:var(--bg);font-weight:800;border-radius:14px;padding:14px 24px;text-decoration:none}
+.shots{display:flex;gap:14px;overflow-x:auto;padding:6px 0 10px}
+.shots img{height:440px;border-radius:26px;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+.foot{margin-top:46px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px}
+.foot a{color:var(--muted)}
+@media(max-width:720px){.hero{grid-template-columns:1fr}.shots img{height:360px}}
+@media(max-width:520px){.wrap{padding:26px 16px 44px}}
+</style></head>
+<body><div class="wrap">
+<div class="brand"><img src="../icon.png" alt="FootScore"><b>FOOTSCORE</b></div>
+<nav><a href="index.html" class="on">Home</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms of Use</a><a href="contact.html">Support</a><a href="../index.html" hreflang="fr">🌐 Français</a></nav>
+
+<div class="hero"><div>
+<h1>Live football, <span>fast and clear.</span></h1>
+<p class="lead">Live scores, lineups, match stats, league tables, top scorers and pre-match insights — for football and eight more sports.</p>
+<a class="btn" href="#">Coming soon on the App Store</a>
+</div>
+<div class="shots"><img src="../shot1.png" alt="Today's matches"><img src="../shot2.png" alt="Lineups"><img src="../shot3.png" alt="Match stats"></div>
+</div>
+<div class="grid">
+<div class="card"><div class="ico">⚽️</div><b>Every match</b><p>From Europe's top leagues to competitions across Africa, the Americas and Asia, day by day — in your own time zone.</p></div>
+<div class="card"><div class="ico">📋</div><b>Lineups & stats</b><p>Starting XIs on the pitch, the match timeline and full match statistics.</p></div>
+<div class="card"><div class="ico">📈</div><b>Insights</b><p>Win probabilities and the most likely score, calculated by FootScore from the standings.</p></div>
+<div class="card"><div class="ico">⭐️</div><b>Favorites & reminders</b><p>Follow your teams and get a reminder 15 minutes before kick-off.</p></div>
+</div>
+
+<div class="foot">© 2026 FootScore · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms of Use</a> · <a href="mailto:youssef.ouadelli1998@gmail.com">youssef.ouadelli1998@gmail.com</a><br>
+FootScore is not affiliated with any league, federation, team or broadcaster. Competition and club names belong to their respective owners.</div>
+</div></body></html>
